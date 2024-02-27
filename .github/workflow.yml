@@ -11,10 +11,10 @@ jobs:
       - name : SonarCloud Scan
         uses : sonarsource/sonarcloud-github-action@master
         env :
-            GITHUB_TOKEN : ${{GIT SECRET}}
-            SONAR_TOKEN : ${{SONAR SECRET}}
+            GITHUB_TOKEN : ${{GIT_SECRET}}
+            SONAR_TOKEN : ${{SONAR_SECRET}}
         with:
           args : >
               -Dsonar.organization=ArshathAkbar
               -Dsonar.projectKey=Sonarspark
-              -Dsonar.python.coverage.reportPaths=coverage.xml
+              //-Dsonar.python.coverage.reportPaths=coverage.xml//
