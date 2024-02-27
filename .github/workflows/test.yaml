@@ -1,20 +1,22 @@
-name : "sonar_cloud_scan_github"
+name: "sonar_cloud_scan_github"
 on:
   workflow_dispatch:
 jobs:
   Demosonarcloudscan:
     runs-on: ubuntu-latest
     steps:
-      - uses : actions/checkout@v3
-        with :
-            fetch-depth : 0
-      - name : SonarCloud Scan
-        uses : sonarsource/sonarcloud-github-action@master
-        env :
-            GITHUB_TOKEN : ${{secrets.GIT_TOKEN}}
-            SONAR_TOKEN : ${{secrets.SONAR_TOKEN}}
+      - name: Checkout repository
+        uses: actions/checkout@v3
         with:
-          args : >
-              -Dsonar.organization=ArshathAkbar
-              -Dsonar.projectKey=Sonarspark
-              //-Dsonar.python.coverage.reportPaths=coverage.xml//
+          fetch-depth: 0
+          node-version: '20'  # Specify Node.js 20
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_SECRET }}   
+          SONAR_TOKEN: ${{ secrets.SONAR_SECRET }}  
+        with:
+          args: >
+            -Dsonar.organization=ArshathAkbar
+            -Dsonar.projectKey=Sonarspark
+            //-Dsonar.python.coverage.reportPaths=coverage.xml// this is my code
